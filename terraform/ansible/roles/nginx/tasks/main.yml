@@ -1,0 +1,38 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Ensure sites-available exists
+  file:
+    path: /etc/nginx/sites-available
+    state: directory
+
+- name: Ensure sites-enabled exists
+  file:
+    path: /etc/nginx/sites-enabled
+    state: directory
+
+- name: Copy Nginx config
+  copy:
+    src: wordpress.conf
+    dest: /etc/nginx/sites-available/wordpress.conf
+
+- name: Enable WordPress site
+  file:
+    src: /etc/nginx/sites-available/wordpress.conf
+    dest: /etc/nginx/sites-enabled/wordpress.conf
+    state: link
+
+- name: Remove default nginx config
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes

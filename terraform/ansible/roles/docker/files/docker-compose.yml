@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+
+    restart: always
+
+    ports:
+      - "8080:80"
+
+    environment:
+      WORDPRESS_DB_HOST: wordpress-db.cw5k6iuscj9u.us-east-1.rds.amazonaws.com:3306
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: StrongPassword123!
+      WORDPRESS_DB_NAME: company_db

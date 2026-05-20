@@ -1,0 +1,14 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Sensitive files
+*.pem
+terraform.tfvars
+
+# Ansible
+.retry
+
+# MacOS
+.DS_Store
