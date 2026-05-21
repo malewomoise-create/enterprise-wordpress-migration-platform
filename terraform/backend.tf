@@ -3,7 +3,7 @@ terraform {
     bucket         = "enterprise-migration-projet"
     key            = "wordpress-migration/dev/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "Ent-dynamo"
+    use_lockfile = true
     encrypt        = true
   }
 }
