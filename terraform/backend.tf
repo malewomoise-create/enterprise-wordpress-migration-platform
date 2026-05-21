@@ -1,6 +1,8 @@
 terraform {
   backend "s3" {
-    use_lockfile = true
+    bucket = "moise-wordpress-migration-2026"
+    key    = "terraform/terraform.tfstate"
+    region = "us-east-1"
   }
 }
 
